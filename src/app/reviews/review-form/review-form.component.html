@@ -1,0 +1,131 @@
+<form class="mt-4" (ngSubmit)="addReview()" #reviewForm="ngForm">
+
+  <div class="mb-3">
+    <label for="name">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      name="title"
+      id="title"
+      [(ngModel)]="newReview.title"
+      placeholder="Insert the title of the review"
+      required
+      maxlength="50"
+      #titleModel="ngModel"
+      [ngClass]="validClasses(titleModel, 'is-valid', 'is-invalid')"
+    />
+    <div class="invalid-feedback" *ngIf="titleModel.errors?.['required']">
+      Insert a valid title
+    </div>
+  </div>
+
+
+  <div class="mb-3">
+    <label for="description">Description</label>
+    <textarea
+      class="form-control"
+      id="description"
+      name="description"
+      rows="3"
+      [(ngModel)]="newReview.description"
+      placeholder="Insert the description"
+      required
+      #descModel="ngModel"
+      [ngClass]="validClasses(descModel, 'is-valid', 'is-invalid')"
+    ></textarea>
+    <div class="invalid-feedback" *ngIf="titleModel.errors?.['required']">Description is required.</div>
+  </div>
+
+  <!-- TODO: Add *NgIf(type == filmography) when the piece is picked  -->
+  <div class="mb-3">
+    <label for="duration">Duration</label>
+    <input
+      type="number"
+      class="form-control"
+      name="duration"
+      id="duration"
+      [(ngModel)]="newReview.duration"
+      placeholder="Duration"
+      required
+      #durationModel="ngModel"
+      [ngClass]="validClasses(durationModel, 'is-valid', 'is-invalid')"
+    />
+    <div class="invalid-feedback" *ngIf="durationModel.errors?.['required']">Duration is required.</div>
+  </div>
+
+  <div
+    class="mb-3"
+  >
+  <label>Launch Date</label>
+  <input
+      type="date"
+      class="form-control"
+      id="launchDate"
+      name="launchDate"
+      title="launchDate"
+      #launchDateModel="ngModel"
+      [(ngModel)]="newReview.launchDate"
+    />
+    <div class="invalid-feedback" *ngIf="launchDateModel.errors?.['required']">Launch date is required.</div>
+  </div>
+
+  <!-- <div class="mb-3">
+    <label for="stars">Star rating:</label>
+    <star-rating
+    [rating]="review.rating"
+    (changed)="setRating($event)"
+    ></star-rating>
+  </div> -->
+
+  <div class="mb-3">
+    <label for="image">Image</label>
+    <input
+      type="file"
+      class="form-control"
+      id="image"
+      title="image"
+      name="image"
+      #fileImage
+      (change)="changeImage(fileImage)"
+      ngModel
+      required
+      #imageModel="ngModel"
+      [ngClass]="validClasses(imageModel, 'is-valid', 'is-invalid')"
+    />
+    <div class="invalid-feedback">An image is required.</div>
+  </div>
+  <img
+    [src]="newReview.image"
+    [ngClass]="{ 'd-none': !newReview.image }"
+    class="img-thumbnail mb-3"
+  />
+
+  <!-- TODO: Add *NgIf(type == book|| type == manga) when the piece is picked  -->
+  <!--<div class="mb-3">
+    <label for="phone">Pages</label>
+    <input
+      type="number"
+      class="form-control"
+      id="pages"
+      title="pages"
+      [(ngModel)]="newReview.pages"
+      placeholder="Number of pages"
+      required
+      #pagesModel="ngModel"
+      [ngClass]="validClasses(pagesModel, 'is-valid', 'is-invalid')"
+    />
+    <div class="invalid-feedback" *ngIf="pagesModel.errors?.['pattern']">
+      Please add a number of pages.
+    </div>
+  </div>-->
+
+  <div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="reviewForm.invalid">
+      Create
+    </button>
+
+  </div>
+</form>

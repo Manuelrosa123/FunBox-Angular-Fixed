@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/reviews']">FunBox <img src="../../../favicon.ico" style="width: 10%;"></a>
+
+    <ul class="navbar-nav ml-auto mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/reviews']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/auth', 'login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sign In</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/auth', 'register']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Create Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/reviews', 'multibrary']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Multibrary</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/reviews', 'add']" routerLinkActive="active" >New review</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/users', 'me']" routerLinkActive="active" >Profile</a> <!--esto no debería de ir, no? esta ruta es de user, vale que no iba XD-->
+      </li>
+    </ul>
+  </div>
+</nav>

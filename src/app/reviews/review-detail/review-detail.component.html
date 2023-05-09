@@ -1,0 +1,26 @@
+<div class="mt-4">
+  <review-card
+    [review]="review"
+    *ngIf="review"
+    (deleted)="goBack()"
+  ></review-card>
+</div>
+<div class="card mt-4" id="cardCreator">
+  <div class="card-header bg-danger text-white">Review's owner</div>
+  <div class="card-body d-flex flex-row">
+    <div>
+      <!--<img id="creatorImg" class="rounded-circle me-3" style="width: 40px;" src={{review.creator?.avatar}} alt="">-->
+    </div>
+    <div>
+      <!--<div><strong id="nameCreator">{{review.creator?.name}}</strong></div>
+      <div><small id="emailCreator">{{review.creator?.email}}</small></div>-->
+    </div>
+  </div>
+</div>
+<div class="mt-4 mb-4">
+  <button class="btn btn-primary" *ngIf="!review.mine">
+    Add to wish list
+  </button>
+  <button type="button" class="btn btn-primary" *ngIf="review.mine" [routerLink]="['/reviews', review._id, 'edit']">Edit</button>&nbsp;
+  <button class="btn btn-success" (click)="goBack()">Go back</button>
+</div>

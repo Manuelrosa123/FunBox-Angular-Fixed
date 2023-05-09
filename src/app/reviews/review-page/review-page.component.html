@@ -1,0 +1,39 @@
+<nav class="navbar navbar-light bg-light justify-content-between mt-3 row">
+  <ul class="nav nav-pills col-auto ms-3">
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        [ngClass]="{ active: onlyFriends }"
+        (click)="onlyFriends= !onlyFriends"
+        >Show Friends Reviews</a
+      >
+    </li>
+  </ul>
+  <form class="container-fluid col">
+    <input
+      class="form-control"
+      type="text"
+      name="search"
+      placeholder="Search"
+      aria-label="Search"
+      [(ngModel)]="search"
+    />
+  </form>
+</nav>
+
+<div
+  id="placesContainer"
+  class="mb-4 mt-4 row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4"
+>
+  <!--<div *ngFor="let review of reviews">
+    <h4>{{review.title}}</h4>
+    <img class="card-img-top" src="{{ review.image }}" />
+  </div>-->
+
+  <review-card
+    class="col"
+    *ngFor="let review of reviews"
+    [review]="review"
+    (deleted)="deleteReview(review)"
+  ></review-card>
+</div>

@@ -1,0 +1,19 @@
+<div class="row mt-4">
+  <div class="col-3">
+    <img class="w-100" id="avatar" src="{{user.avatar}}" alt="" />
+  </div>
+  <div class="col-9">
+    <h4>{{user.name}}</h4>
+    <h4>
+      <small class="text-muted">{{user.email}}</small>
+    </h4>
+      <p *ngIf="user.me">
+        <a class="btn btn-primary" [routerLink]="['/users', 'edit']" >Edit profile</a>
+      </p>
+  </div><br><br>
+  <div class="mt-4">
+    <!--<arcgis-map [coords]="[this.user.lng, this.user.lat]">
+      <arcgis-marker [coords]="[this.user.lng, this.user.lat]" color="red"></arcgis-marker>
+    </arcgis-map>-->
+  </div>
+</div>

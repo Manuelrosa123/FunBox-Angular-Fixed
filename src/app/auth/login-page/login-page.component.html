@@ -1,0 +1,57 @@
+<form class="mt-4" #loginForm="ngForm" (ngSubmit)="addUserLogin()" >
+  <legend>Start your Journey with Funbox!</legend>
+
+  <div class="mb-3">
+    <label for="correo">Email:</label>
+    <input
+      [(ngModel)]="newUserLogin.email"
+      type="email"
+      class="form-control"
+      name="email"
+      id="email"
+      placeholder="Email"
+      required
+      #emailModel = 'ngModel'
+      ngModel
+      [ngClass]="validClasses(emailModel, 'is-valid', 'is-invalid')"
+    />
+  </div>
+  <div class="invalid-feedback" *ngIf="emailModel.errors?.['required']">
+    Email is required and can only contain letters.
+  </div>
+  <div class="mb-3">
+    <label for="password">Password:</label>
+    <input
+      [(ngModel)]="newUserLogin.password"
+      type="password"
+      class="form-control"
+      name="password"
+      id="password"
+      placeholder="Password"
+      required
+      #passwordModel = 'ngModel'
+      ngModel
+      [ngClass]="validClasses(passwordModel, 'is-valid', 'is-invalid')"
+    />
+  </div>
+  <div class="invalid-feedback" *ngIf="passwordModel.errors?.['required']">
+    Password is required and has a minimum of 4 characters.
+  </div>
+  <!-- <a class="btn btn-secondary" role="button" [routerLink]="['/auth/register']" >Create account</a> -->
+  <button type="submit" class="btn btn-dark" [disabled]="loginForm.invalid">
+    Login</button
+  >&nbsp;
+  <button type="submit" class="btn btn-danger" href="#">
+    Log in with Google</button
+  >&nbsp;
+  <button type="submit" class="btn btn-primary" href="#">
+    Log in with Facebook</button
+  ><br /><br />
+  <button
+    type="submit"
+    class="btn btn-secondary"
+    [routerLink]="['/auth/register']"
+  >
+    Sign Up
+  </button>
+</form>

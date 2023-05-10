@@ -2,7 +2,7 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-//import { UserLogin } from '../interfaces/user';
+import { UserLogin } from '../interfaces/user';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -14,19 +14,14 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginPageComponent {
 
-
   newUserLogin = this.resetUserLogin();
   saved=false;
-
   @ViewChild('loginForm') loginForm!: NgForm;
 
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router
-    //private readonly userService: userService,
-  ) {
-
-  }
+  ) {}
 
    canDeactivate() {
     return this.saved || this.loginForm.pristine || confirm("Do you really want to leave?. Changes will be lost");
@@ -36,16 +31,16 @@ export class LoginPageComponent {
     return {
       email: '',
       password: '',
-      lat: 0,
-      lng: 0,
+      //lat: 0,
+      //lng: 0,
     };
   }
-  ngOnInit(): void {
+  ngOnInit(): void {/*
     console.log(this.newUserLogin);
     navigator.geolocation.getCurrentPosition(pos => {
       this.newUserLogin.lat = pos.coords.latitude;
       this.newUserLogin.lng = pos.coords.longitude;
-    });
+    });*/
   }
 
   validClasses(ngModel: NgModel, validClass: string, errorClass: string) {
@@ -55,16 +50,15 @@ export class LoginPageComponent {
     };
   }
 
-  addUserLogin() {
-
-    /*this.authService.postLogin(this.newUserLogin).subscribe({
-      next: (r) => {
-        console.log(this.newUserLogin);
+  loginUser() {
+    this.authService.login(this.newUserLogin).subscribe({
+      next: (res) => {
         this.saved = true;
-        localStorage.setItem("token",r.accessToken)
+        localStorage.setItem("token",res.token);
         this.router.navigate(['/reviews']);
+        console.log("hola");
       },
-      error: (error) => console.error("error:" + error),
-    })*/
+      error: (error) => console.error("error:" + error, this.newUserLogin),
+    })
   }
 }

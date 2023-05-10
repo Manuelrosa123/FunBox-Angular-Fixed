@@ -29,7 +29,7 @@ export class ReviewsService {
   }
 
   delete(id: string): Observable<void> {
-    return this.http.delete<void>(`reviews/${id}`);
+    return this.http.delete<void>(`reviews/${id}`); //esto para cuando tengamos la url de verdad
   }
 
   //Creacion de servicio de editar

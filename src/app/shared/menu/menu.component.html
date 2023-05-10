@@ -21,6 +21,9 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/users', 'me']" routerLinkActive="active" >Profile</a> <!--esto no debería de ir, no? esta ruta es de user, vale que no iba XD-->
       </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logOut()">Log-out</a>
+      </li>
     </ul>
   </div>
 </nav>

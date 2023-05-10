@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm, NgModel} from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-//import { User } from '../interfaces/user';
-//import "../../../styles.css";
+import { User } from '../interfaces/user';
 import { ConfirmedEmailDirective } from 'src/app/shared/validators/confirmed-email.directive';
 import { AuthService } from '../services/auth.service';
 
@@ -17,42 +16,49 @@ import { AuthService } from '../services/auth.service';
 })
 
 export class RegisterPageComponent implements OnInit{
-  newUser = this.resetUser();
-  saved=false;
-
+  newRegister=this.resetRegister();
+  saved = false;
   @ViewChild('registerForm') registerForm!: NgForm;
-  emailModel !: NgModel;
+  email2="";
+
 
   constructor(
+    private readonly authService: AuthService,
     private readonly router: Router,
-    private readonly authService: AuthService
-    //private readonly userService: userService,
   ) {
-
   }
 
   canDeactivate() {
     return this.saved || this.registerForm.pristine || confirm("Do you really want to leave?. Changes will be lost");
   }
 
-  resetUser() {
+  resetRegister():User {
     return {
       name: '',
       email: '',
       password: '',
-      lat: 0,
-      lng: 0,
-      avatar: ''
+      avatar: '',
     };
   }
 
-  ngOnInit(): void {
-
-    navigator.geolocation.getCurrentPosition(pos => {
-      this.newUser.lat = pos.coords.latitude;
-      this.newUser.lng = pos.coords.longitude;
-    });
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+  ngOnInit():void{
+    /*GeolocationService.getLocation().then(resp=>{
+      this.newRegister.lat=resp.latitude;
+      this.newRegister.lng=resp.longitude;
+  })*/
   }
+
+  registerUser(){
+    this.authService.register(this.newRegister).subscribe({
+      next: () => {
+        this.saved = true;
+      },
+      error: (error) => console.error("error:" + error),
+    })
+    this.router.navigate(['/auth/login']);
+  }
+
   changeImage(fileInput: HTMLInputElement) {
     if (!fileInput.files || fileInput.files.length === 0) {
       return;
@@ -60,7 +66,7 @@ export class RegisterPageComponent implements OnInit{
     const reader: FileReader = new FileReader();
     reader.readAsDataURL(fileInput.files[0]);
     reader.addEventListener('loadend', () => {
-      this.newUser.avatar = reader.result as string;
+      this.newRegister.avatar = reader.result as string;
     });
   }
 
@@ -70,16 +76,4 @@ export class RegisterPageComponent implements OnInit{
       [errorClass]: ngModel.touched && ngModel.invalid,
     };
   }
-
-  addUser(){
-    /*console.log(this.newUser);
-    this.authService.post(this.newUser).subscribe({
-      next: () => {
-        this.saved = true;
-        this.router.navigate(['/auth/login']);
-      },
-      error: (error) => console.error("error:" + error),
-    })*/
-  }
-
 }

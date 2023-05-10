@@ -1,150 +1,137 @@
-<html>
-  <head>
-    <title></title>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <div class="container">
-      <form
-        action="#"
-        id="form-register"
-        class="mt-4"
-        method="POST"
-        role="form"
-        (ngSubmit)="addUser()" #registerForm="ngForm"
-      >
-        <legend>Create an account</legend>
+<form class="mt-4" (ngSubmit)="registerUser()" #registerForm="ngForm">
+  <legend>Create an account</legend>
 
-        <div class="mb-3">
-          <label for="nombre">Name:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="nameUser"
-            placeholder="Name"
-            required
-            [(ngModel)]="newUser.name"
-            #nameModel='ngModel'
-            [ngClass]="validClasses(nameModel, 'is-valid', 'is-invalid')"
-          />
-          <div class="invalid-feedback" *ngIf="nameModel.errors?.['required']">
-            Name is required and can only contain letters and spaces.
-          </div>
-        </div>
-        <div ngModelGroup="emailGroup"
-        #emailModel="ngModelGroup" fsConfirmedEmail >
-          <div class="mb-3">
-            <label for="correo">Email:</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email1"
-              name="email1"
-              placeholder="Email"
-              required
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-              #email1Model = 'ngModel'
-              [(ngModel)]="newUser.email"
-              [ngClass]="validClasses(email1Model, 'is-valid', 'is-invalid')"
-            />
-          </div>
-          <div class="invalid-feedback" *ngIf="emailModel.invalid">
-            Email is required and can only contain letters.
-          </div>
-          <div class="mb-3">
-            <label for="correo">Repeat Email:</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email2"
-              name="email2"
-              placeholder="Email"
-              required
-              #email2Model = 'ngModel'
-              ngModel
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-              [ngClass]="validClasses(email2Model, 'is-valid', 'is-invalid')"
-            />
-          </div>
-          <div class="invalid-feedback" *ngIf="email2Model.errors?.['required']">
-            Email is required and can only contain letters.
-          </div>
-          <div class="invalid-feedback" *ngIf="email2Model.errors?.['repeated']">
-            Email is required and can only contain letters and spaces.
-          </div>
-          <div class="invalid-feedback" *ngIf="emailModel.invalid" class="text-danger">
-            Emails must be equal
-          </div>
-        </div>
+  <div class="mb-3">
 
-        <div class="mb-3">
-          <label for="password">Password:</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            placeholder="Password"
-            required
-            minlength="4"
-            #passwordModel = 'ngModel'
-            [(ngModel)]="newUser.password"
-            [ngClass]="validClasses(passwordModel, 'is-valid', 'is-invalid')"
-          />
-          <div class="invalid-feedback" *ngIf="passwordModel.errors?.['required']">
-            Password is required and can only contain letters.
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="mb-3 col">
-            <label for="lat">Latitude:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="lat"
-              name="lat"
-              placeholder="Geolocating..."
-              readonly
-              [(ngModel)]="newUser.lat"
-            />
-          </div>
-          <div class="mb-3 col">
-            <label for="lng">Longitude:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="lng"
-              name="lng"
-              placeholder="Geolocating..."
-              [(ngModel)]="newUser.lng"
-              readonly
-            />
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="image">Avatar image</label>
-          <input
-            type="file"
-            class="form-control"
-            id="avatar"
-            name="avatar"
-            required
-            (change)="changeImage(fileAvatar)"
-            [src]="newUser.avatar"
-            #fileAvatar
-            #avatarModel="ngModel"
-            [(ngModel)] = newUser.avatar
-            [ngClass]="validClasses(avatarModel, 'is-valid', 'is-invalid')"
-          />
-          <div class="invalid-feedback" *ngIf="avatarModel.errors?.['required']">
-            Avatar is required.
-          </div>
-        </div>
-        <img src="" alt="" id="imgPreview" class="img-thumbnail d-none" />
-        <a class="btn btn-secondary" href="login.html" role="button">Go back</a>&nbsp;
-        <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Create account</button>
-      </form>
+    <div class="mb-3">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        id="name"
+        [(ngModel)]="newRegister.name"
+        placeholder="Enter name"
+        required
+        pattern="^[a-zA-Z][a-zA-Z ]*$"
+        #nameModel="ngModel"
+        [ngClass]="validClasses(nameModel, 'is-valid', 'is-invalid')"
+      />
+      <div class="invalid-feedback" *ngIf="nameModel.errors?.['required']">
+        Name is required and can only contain letters and spaces.
+      </div>
+      <div class="invalid-feedback" *ngIf="nameModel.errors?.['pattern']">
+        Name can only contain letters and spaces (and start with a letter).
+      </div>
     </div>
-  </body>
-</html>
+
+    <div ngModelGroup="emailGroup" #emailsRepeatedModel="ngModelGroup" fsEmailRepeated>
+      <div class="mb-3">
+        <label for="name">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          id="email"
+          [(ngModel)]="newRegister.email"
+          placeholder="Enter email"
+          required
+          pattern="^[a-zA-Z]*[@][a-zA-Z ]*[.][a-zA-Z ]*$"
+          #emailModel="ngModel"
+          [ngClass]="validClasses(emailModel, 'is-valid', 'is-invalid')"
+        />
+        <div class="invalid-feedback" *ngIf="emailModel.errors?.['required']">
+          Email is required and can only contain letters and spaces.
+        </div>
+        <div class="invalid-feedback" *ngIf="emailModel.errors?.['pattern']">
+          Email can only contain letters and spaces (and start with a letter).
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="name">Repeat Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email2"
+          id="email2"
+          [(ngModel)]="email2"
+          placeholder="Repeat email"
+          required
+          pattern="^[a-zA-Z]*[@][a-zA-Z ]*[.][a-zA-Z ]*$"
+          #email2Model="ngModel"
+          [ngClass]="validClasses(email2Model, 'is-valid', 'is-invalid')"
+        />
+        <div class="invalid-feedback" *ngIf="email2Model.errors?.['required']">
+          Email is required and can only contain letters and spaces.
+        </div>
+        <div class="invalid-feedback" *ngIf="email2Model.errors?.['pattern']">
+          Email can only contain letters and spaces (and start with a letter).
+        </div>
+        <div *ngIf="emailsRepeatedModel.invalid" class="invalid-feedback">
+          Emails must be the same.
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="name">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        id="password"
+        [(ngModel)]="newRegister.password"
+        placeholder="Enter your password"
+        required
+        minlength="4"
+        pattern="^[a-zA-Z][a-zA-Z ]*$"
+        #passwordModel="ngModel"
+        [ngClass]="validClasses(passwordModel, 'is-valid', 'is-invalid')"
+      />
+      <div class="invalid-feedback" *ngIf="passwordModel.errors?.['required']">
+        Password is required and can only contain letters and spaces.
+      </div>
+      <div class="invalid-feedback" *ngIf="passwordModel.errors?.['pattern']">
+        Password can only contain letters and spaces (and start with a letter).
+      </div>
+    </div>
+
+  <!--<div class="form-row">
+    <div class="mb-3 col">
+      <label for="lat">Latitude:</label>
+      <input type="text" class="form-control" id="lat" name="lat" placeholder="Geolocating..." readonly [(ngModel)]="newRegister.lat"/>
+    </div>
+    <div class="mb-3 col">
+      <label for="lng">Longitude:</label>
+      <input type="text" class="form-control" id="lng" name="lng" placeholder="Geolocating..." readonly [(ngModel)]="newRegister.lng"/>
+    </div>
+  </div>-->
+
+  <div class="mb-3">
+    <label for="image">Image</label>
+    <input
+      type="file"
+      class="form-control"
+      id="avatar"
+      name="avatar"
+      #fileImage
+      (change)="changeImage(fileImage)"
+      ngModel
+      required
+      #avatarModel="ngModel"
+      [ngClass]="validClasses(avatarModel, 'is-valid', 'is-invalid')"
+    />
+    <div class="invalid-feedback">An image is required.</div>
+  </div>
+
+  <img
+    [src]="newRegister.avatar"
+    [ngClass]="{ 'd-none': !newRegister.avatar }"
+    class="img-thumbnail mb-3"
+  />
+
+  <div>
+    <a class="btn btn-secondary" [routerLink]="['/auth/login']" >Login</a>
+    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Create account</button>
+  </div>

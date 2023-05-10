@@ -1,3 +1,4 @@
 nav a{
-  font-family: Graphik-Semibold-Web,sans-serif
+  font-family: Graphik-Semibold-Web,sans-serif;
+  cursor:pointer;
 }

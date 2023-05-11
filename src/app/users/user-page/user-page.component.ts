@@ -16,8 +16,8 @@ import { RouterLink } from '@angular/router';
 })
 export class UserPageComponent implements OnInit {
   user!: User;
-  latitude=0;
-  longitude=0;
+  //latitude=0;
+  //longitude=0;
 
   constructor(private readonly userService: UserService) {
 

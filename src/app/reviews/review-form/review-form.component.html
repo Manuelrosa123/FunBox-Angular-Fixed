@@ -1,6 +1,13 @@
 <form class="mt-4" (ngSubmit)="addReview()" #reviewForm="ngForm">
 
   <div class="mb-3">
+    Type of Media <br>
+    <select class="form-control" [(ngModel)]="newReview.type" [ngModelOptions]="{standalone:true}">
+      <option *ngFor="let option of types" value={{option.value}}>{{option.label}}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
     <label for="name">Title</label>
     <input
       type="text"
@@ -36,23 +43,6 @@
     <div class="invalid-feedback" *ngIf="titleModel.errors?.['required']">Description is required.</div>
   </div>
 
-  <!-- TODO: Add *NgIf(type == filmography) when the piece is picked  -->
-  <div class="mb-3">
-    <label for="duration">Duration</label>
-    <input
-      type="number"
-      class="form-control"
-      name="duration"
-      id="duration"
-      [(ngModel)]="newReview.duration"
-      placeholder="Duration"
-      required
-      #durationModel="ngModel"
-      [ngClass]="validClasses(durationModel, 'is-valid', 'is-invalid')"
-    />
-    <div class="invalid-feedback" *ngIf="durationModel.errors?.['required']">Duration is required.</div>
-  </div>
-
   <div
     class="mb-3"
   >
@@ -65,8 +55,26 @@
       title="launchDate"
       #launchDateModel="ngModel"
       [(ngModel)]="newReview.launchDate"
+      [ngClass]="validClasses(launchDateModel, 'is-valid', 'is-invalid')"
     />
     <div class="invalid-feedback" *ngIf="launchDateModel.errors?.['required']">Launch date is required.</div>
+  </div>
+
+  <div
+    class="mb-3"
+  >
+  <label>Review Date</label>
+  <input
+      type="date"
+      class="form-control"
+      id="reviewDate"
+      name="reviewDate"
+      title="reviewDate"
+      #reviewDateModel="ngModel"
+      [(ngModel)]="newReview.reviewDate"
+      [ngClass]="validClasses(reviewDateModel, 'is-valid', 'is-invalid')"
+    />
+    <div class="invalid-feedback" *ngIf="reviewDateModel.errors?.['required']">Launch date is required.</div>
   </div>
 
   <!-- <div class="mb-3">
@@ -100,24 +108,53 @@
     class="img-thumbnail mb-3"
   />
 
-  <!-- TODO: Add *NgIf(type == book|| type == manga) when the piece is picked  -->
-  <!--<div class="mb-3">
-    <label for="phone">Pages</label>
+  <div class="mb-3" *ngIf="newReview.type === 'Manga' || newReview.type === 'Book'">
+    <label for="pages">Pages</label>
     <input
       type="number"
       class="form-control"
+      name="pages"
       id="pages"
-      title="pages"
       [(ngModel)]="newReview.pages"
-      placeholder="Number of pages"
+      placeholder="Pages"
       required
       #pagesModel="ngModel"
       [ngClass]="validClasses(pagesModel, 'is-valid', 'is-invalid')"
     />
-    <div class="invalid-feedback" *ngIf="pagesModel.errors?.['pattern']">
-      Please add a number of pages.
-    </div>
-  </div>-->
+    <div class="invalid-feedback" *ngIf="pagesModel.errors?.['required']">Duration is required.</div>
+  </div>
+
+  <div class="mb-3" *ngIf="newReview.type === 'Videogame' || newReview.type === 'Film'">
+    <label for="duration">Duration</label>
+    <input
+      type="number"
+      class="form-control"
+      name="duration"
+      id="duration"
+      [(ngModel)]="newReview.duration"
+      placeholder="Duration"
+      required
+      #durationModel="ngModel"
+      [ngClass]="validClasses(durationModel, 'is-valid', 'is-invalid')"
+    />
+    <div class="invalid-feedback" *ngIf="durationModel.errors?.['required']">Duration is required.</div>
+  </div>
+
+  <div class="mb-3" *ngIf="newReview.type === 'Series' || newReview.type === 'Manga' || newReview.type==='Anime'">
+    <label for="chapters">Chapters</label>
+    <input
+      type="number"
+      class="form-control"
+      name="chapters"
+      id="chapters"
+      [(ngModel)]="newReview.chapters"
+      placeholder="Chapters"
+      required
+      #chaptersModel="ngModel"
+      [ngClass]="validClasses(chaptersModel, 'is-valid', 'is-invalid')"
+    />
+    <div class="invalid-feedback" *ngIf="chaptersModel.errors?.['required']">Duration is required.</div>
+  </div>
 
   <div>
     <button

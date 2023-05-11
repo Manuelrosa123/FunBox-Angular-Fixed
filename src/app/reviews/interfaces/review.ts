@@ -8,10 +8,11 @@ export interface Review {
   type: string; //esto era el format antes
   launchDate: Date;
   reviewDate: Date;
+  chapters?:number;
   creator?:string; //esto en :User no estaría mal, pero por ahora vamos a dejarlo en string
   stars?: number;
   likes: number;
-  duration?: string;
+  duration?: number;
   pages?: number;
   mine?: boolean;  //esto puede ser un poco mareo
 }

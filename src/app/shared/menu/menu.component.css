@@ -2,3 +2,11 @@ nav a{
   font-family: Graphik-Semibold-Web,sans-serif;
   cursor:pointer;
 }
+
+nav a:hover{
+  color:rgb(219, 31, 219);
+}
+
+nav a.nav-link.active{
+  color:rgb(238, 18, 238);
+}

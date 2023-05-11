@@ -6,24 +6,14 @@ import { Review } from '../interfaces/review';
   standalone: true,
 })
 export class ReviewFilterPipe implements PipeTransform {
-  transform(value: any, ...args: any[]) {
-    throw new Error('Method not implemented.');
+  transform(
+    reviews: Review[],
+    search: string,
+    type: string
+  ): Review[] {
+    return search
+      ? reviews.filter((r) =>
+          r.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) && r.type.toLocaleLowerCase().includes(type.toLocaleLowerCase()))
+      : reviews;
   }
-  // transform(
-  //   reviews: Review[],
-  //   onlyFriends: boolean,
-  //   search: string
-  // ): Review[] {
-  //   const weekDay = new Date().getDay();
-  //   if (onlyOpen) {
-  //     reviews = reviews.filter((r) =>
-  //       r.daysOpen.includes('' + weekDay)
-  //     );
-  //   }
-  //   return search
-  //     ? reviews.filter((r) =>
-  //         r.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || r.description.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-  //       )
-  //     : reviews;
-  // }
 }

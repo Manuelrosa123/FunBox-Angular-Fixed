@@ -21,8 +21,18 @@ import { ReviewsService } from '../services/reviews.service';
 })
 export class ReviewPageComponent implements OnInit{
   reviews: Review[] = [];
-  onlyFriends = false;
+  //onlyFriends = false;
   search = '';
+  type="Videogame"
+
+  types=[
+    {value:"", label:"All"},
+    {value:'Videogame',label:"Videogame"},
+    {value:'Series',label:"Series"},
+    {value:'Film',label:"Film"},
+    {value:'Anime',label:"Anime"},
+    {value: "Manga", label: "Manga"},
+    {value: "Book", label: "Book"}];
 
   constructor(private readonly reviewsService: ReviewsService) {}
 

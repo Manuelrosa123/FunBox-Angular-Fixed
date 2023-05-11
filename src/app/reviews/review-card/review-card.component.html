@@ -1,14 +1,14 @@
-<div class="card h-100 shadow">
+<div class="card-neon card h-100 shadow">
   <a [routerLink]="['/reviews', review._id]">
     <img class="card-img-top" src="{{ review.image }}" />
   </a>
   <div class="card-body">
-    <button class="btn btn-danger btn-sm float-end" (click)="delete()" *ngIf="review.mine">
+    <!--<button class="btn btn-danger btn-sm float-end" (click)="delete()" *ngIf="review.mine">
       Delete
-    </button>
-    <button class="btn btn-success btn-sm float-end" (click)="wishList()" *ngIf="!review.mine">
+    </button>-->
+    <!--<button class="btn btn-success btn-sm float-end" (click)="wishList()" *ngIf="!review.mine">
       Add to wish list
-    </button>
+    </button>-->
     <h4 class="card-title"><a [routerLink]="['/reviews', review._id]">{{ review.title }}</a></h4>
     <p class="card-text">{{ review.description }}</p>
     <div class="card-text">

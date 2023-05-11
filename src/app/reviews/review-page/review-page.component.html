@@ -1,12 +1,9 @@
-<nav class="navbar navbar-light bg-light justify-content-between mt-3 row">
+<nav class="navbar navbar-dark bg-dark justify-content-between mt-3 row">
   <ul class="nav nav-pills col-auto ms-3">
     <li class="nav-item">
-      <a
-        class="nav-link active"
-        [ngClass]="{ active: onlyFriends }"
-        (click)="onlyFriends= !onlyFriends"
-        >Show Friends Reviews</a
-      >
+      <select class="form-control" [(ngModel)]="type" [ngModelOptions]="{standalone:true}">
+        <option *ngFor="let option of types" value={{option.value}}>{{option.label}}</option>
+      </select>
     </li>
   </ul>
   <form class="container-fluid col">
@@ -32,7 +29,7 @@
 
   <review-card
     class="col"
-    *ngFor="let review of reviews"
+    *ngFor="let review of reviews | reviewFilter:search:type"
     [review]="review"
     (deleted)="deleteReview(review)"
   ></review-card>

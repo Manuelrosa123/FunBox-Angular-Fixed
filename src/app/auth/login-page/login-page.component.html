@@ -2,41 +2,47 @@
   <legend>Start your Journey with Funbox!</legend>
 
   <div class="mb-3">
-    <label for="correo">Email:</label>
-    <input
-      [(ngModel)]="newUserLogin.email"
-      type="email"
-      class="form-control"
-      name="email"
-      id="email"
-      placeholder="Email"
-      required
-      #emailModel = 'ngModel'
-      ngModel
-      [ngClass]="validClasses(emailModel, 'is-valid', 'is-invalid')"
-    />
-  </div>
-  <div class="invalid-feedback" *ngIf="emailModel.errors?.['required']">
-    Email is required and can only contain letters.
-  </div>
-  <div class="mb-3">
-    <label for="password">Password:</label>
-    <input
-      [(ngModel)]="newUserLogin.password"
-      type="password"
-      class="form-control"
-      name="password"
-      id="password"
-      placeholder="Password"
-      required
-      #passwordModel = 'ngModel'
-      ngModel
-      [ngClass]="validClasses(passwordModel, 'is-valid', 'is-invalid')"
-    />
-  </div>
-  <div class="invalid-feedback" *ngIf="passwordModel.errors?.['required']">
-    Password is required and has a minimum of 4 characters.
-  </div>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        id="email"
+        [(ngModel)]="newUserLogin.email"
+        placeholder="Email"
+        required
+        #emailModel="ngModel"
+        [ngClass]="validClasses(emailModel, 'is-valid', 'is-invalid')"
+      />
+      <div class="invalid-feedback" *ngIf="emailModel.errors?.['required']">
+        Email is required.
+      </div>
+      <div class="invalid-feedback" *ngIf="emailModel.errors?.['pattern']">
+        Email is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        id="password"
+        [(ngModel)]="newUserLogin.password"
+        placeholder="Password"
+        required
+        #passwordModel="ngModel"
+        [ngClass]="validClasses(passwordModel, 'is-valid', 'is-invalid')"
+      />
+      <div class="invalid-feedback" *ngIf="passwordModel.errors?.['required']">
+        Password is required and has a minimum of 4 characters.
+      </div>
+      <div class="invalid-feedback" *ngIf="passwordModel.errors?.['pattern']">
+        Password is required and has a minimum of 4 characters.
+      </div>
+    </div>
+
   <!-- <a class="btn btn-secondary" role="button" [routerLink]="['/auth/register']" >Create account</a> -->
   <button type="submit" class="btn btn-dark" [disabled]="loginForm.invalid">
     Login</button

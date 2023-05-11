@@ -1,7 +1,7 @@
 <form class="mt-4" (ngSubmit)="addReview()" #reviewForm="ngForm">
 
   <div class="mb-3">
-    Type of Media <br>
+    <label for="type">Type of Media</label>
     <select class="form-control" [(ngModel)]="newReview.type" [ngModelOptions]="{standalone:true}">
       <option *ngFor="let option of types" value={{option.value}}>{{option.label}}</option>
     </select>

@@ -20,6 +20,14 @@ export class ReviewFormComponent implements OnInit{
   saved = false;
   @ViewChild('reviewForm') reviewForm!: NgForm;
 
+  types=[
+    {value:'Videogame',label:"Videogame"},
+    {value:'Series',label:"Series"},
+    {value:'Film',label:"Film"},
+    {value:'Anime',label:"Anime"},
+    {value: "Manga", label: "Manga"},
+    {value: "Book", label: "Book"}];
+
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -64,11 +72,12 @@ export class ReviewFormComponent implements OnInit{
       reviewDate: new Date("2023-05-05"),
       likes: 0,
       stars: 0,
-      duration:'',
+      duration:0,
       creator:"shadowlolo", //prueba
       //address: ''  //???
       pages:0,
-      mine:true
+      mine:true,
+      chapters:0
     };
   }
 

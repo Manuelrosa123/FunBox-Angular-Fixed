@@ -19,11 +19,21 @@ export class ReviewCardComponent {
   //latitude= 37;
   //longitude= -0.5;
 
+  dateReview!:string;
+  dateLauchment!:string;
+
   ngOnInit() {
+    this.dateLauchment= this.transformDate(this.review.launchDate);
+    this.dateReview = this.transformDate(this.review.reviewDate);
     /*navigator.geolocation.getCurrentPosition(pos => {
       this.latitude = pos.coords.latitude;
       this.longitude = pos.coords.longitude;
     });*/
+  }
+
+  transformDate(date:Date):string{
+    const myDate=String(date);
+    return myDate.substring(0,10);
   }
 
   constructor(private readonly ReviewsService: ReviewsService) {}

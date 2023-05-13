@@ -1,5 +1,5 @@
 export interface User {
-  id?: string;        //es string porque es mongoDB
+  _id?: string;        //es string porque es mongoDB
   name: string;
   email: string;
   password?: string;

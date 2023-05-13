@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { AuthGuard } from "../auth/guards/auth.guard";
 
 export const USER_ROUTES: Routes = [
   {
@@ -14,13 +15,15 @@ export const USER_ROUTES: Routes = [
       import('./user-page/user-page.component').then(
         (m) => m.UserPageComponent
       ),
+      canActivate: [AuthGuard]
   },
   {
-    path: ':edit',
+    path: 'edit',
     loadComponent: () =>
       import('./edit-user-page/edit-user-page.component').then(
         (m) => m.EditUserPageComponent
       ),
+      canActivate: [AuthGuard]
   },
   {
     path: ':id',

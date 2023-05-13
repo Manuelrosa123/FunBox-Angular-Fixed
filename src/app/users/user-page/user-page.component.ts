@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule,Location } from '@angular/common';
 import { User } from 'src/app/auth/interfaces/user';
 import { UserService } from '../services/user.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 //import { ArcgisMapComponent } from 'src/app/reviews/maps/arcgis-map/arcgis-map.component';
 //import { ArcgisMarkerDirective } from 'src/app/reviews/maps/arcgis-marker/arcgis-marker.directive';
 
@@ -19,13 +19,20 @@ export class UserPageComponent implements OnInit {
   //latitude=0;
   //longitude=0;
 
-  constructor(private readonly userService: UserService) {
+  constructor(
+    private readonly userService: UserService,
+    private readonly route: ActivatedRoute,
+    private location: Location
+  ) {}
 
-  }
-  ngOnInit(): void {/*
-    this.userService.getMyUser().subscribe((r)=>this.user=r);
-    throw new Error('Method not implemented.');
-    this.latitude=this.user.lat;
-    this.longitude=this.user.lng;*/
+  ngOnInit(): void {
+    const id=(this.route.snapshot.paramMap.get('id'));
+    const currentUrl = this.location.path();
+    if (currentUrl!="/users/me")
+    {
+      this.userService.getUserId(String(id)).subscribe(
+        u => this.user = u
+      );
+    }
   }
 }

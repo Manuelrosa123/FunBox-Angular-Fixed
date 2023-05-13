@@ -1,4 +1,4 @@
-//import { User } from "src/app/auth/interfaces/user";
+import { User } from "src/app/auth/interfaces/user";
 
 export interface Review {
   _id?: string;
@@ -9,7 +9,7 @@ export interface Review {
   launchDate: Date;
   reviewDate: Date;
   chapters?:number;
-  creator?:string; //esto en :User no estaría mal, pero por ahora vamos a dejarlo en string
+  creator?:string;
   stars?: number;
   likes: number;
   duration?: number;

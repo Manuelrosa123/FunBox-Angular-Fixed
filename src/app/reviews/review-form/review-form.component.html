@@ -17,7 +17,7 @@
       [(ngModel)]="newReview.title"
       placeholder="Insert the title of the review"
       required
-      maxlength="50"
+      maxlength="40"
       #titleModel="ngModel"
       [ngClass]="validClasses(titleModel, 'is-valid', 'is-invalid')"
     />
@@ -33,6 +33,7 @@
       class="form-control"
       id="description"
       name="description"
+      maxlength="40"
       rows="3"
       [(ngModel)]="newReview.description"
       placeholder="Insert the description"

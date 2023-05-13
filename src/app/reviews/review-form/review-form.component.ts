@@ -67,13 +67,13 @@ export class ReviewFormComponent implements OnInit{
       title: '',
       image: '',
       description: '',
-      type:'Videogame', //prueba
+      type:'Videogame', //prueba (que ya va bien)
       launchDate: new Date("2023-05-05"),
       reviewDate: new Date("2023-05-05"),
       likes: 0,
       stars: 0,
       duration:0,
-      creator:"shadowlolo", //prueba
+      creator:"645e7444b2f9a5c184f50e3b",
       //address: ''  //???
       pages:0,
       mine:true,

@@ -12,6 +12,7 @@ export interface ReviewResponse {
 
 export interface TokenResponse {
   token: string;
+  user: User
 }
 
 export interface UserResponse {

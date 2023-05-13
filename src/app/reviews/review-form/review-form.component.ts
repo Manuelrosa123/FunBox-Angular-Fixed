@@ -73,7 +73,7 @@ export class ReviewFormComponent implements OnInit{
       likes: 0,
       stars: 0,
       duration:0,
-      creator:"645e7444b2f9a5c184f50e3b",
+      creator: JSON.parse(localStorage.getItem("user")!)._id,
       //address: ''  //???
       pages:0,
       mine:true,

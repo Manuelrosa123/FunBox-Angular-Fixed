@@ -8,7 +8,7 @@
     <h4>
       <small class="text-muted">{{user.email}}</small>
     </h4>
-      <p *ngIf="user.me">
+      <p *ngIf="me">
         <a class="btn btn-primary" [routerLink]="['/users', 'edit']" >Edit profile</a>
       </p>
   </div><br><br>

@@ -18,11 +18,7 @@ export class ReviewDetailComponent {
 
   review!:Review;
   reviewCreator!:User
-
-  /*review: any; ??
-  address="";
-  longitude=0;
-  latitude=28;*/
+  me:boolean=false;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -40,6 +36,8 @@ export class ReviewDetailComponent {
         this.userService.getUserId(String(this.review.creator)).subscribe(
           u => this.reviewCreator = u
         );
+        if (this.review.creator===JSON.parse(localStorage.getItem("user")!)._id) //to see if the user is yourself, so you can edit.
+          this.me=true;
       }
     );
   }

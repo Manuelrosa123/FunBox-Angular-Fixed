@@ -5,13 +5,13 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { CanDeactivateComponent } from 'src/app/guards/leave-page.guard';
 import { Review } from '../interfaces/review';
 import { ReviewsService } from '../services/reviews.service';
-import { StarRatingComponent } from 'src/app/reviews/star-rating/star-rating.component';
+//import { StarRatingComponent } from 'src/app/reviews/star-rating/star-rating.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'review-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, StarRatingComponent,HttpClientModule],
+  imports: [CommonModule, FormsModule, /*StarRatingComponent,*/HttpClientModule],
   templateUrl: './review-form.component.html',
   styleUrls: ['./review-form.component.css']
 })
@@ -28,6 +28,10 @@ export class ReviewFormComponent implements OnInit{
     {value: "Manga", label: "Manga"},
     {value: "Book", label: "Book"}];
 
+  booleanValues=[
+    {value:true,label:'Public'},
+    {value:false,label:'Private'}
+  ]
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -67,6 +71,8 @@ export class ReviewFormComponent implements OnInit{
       title: '',
       image: '',
       description: '',
+      public:true,
+      reviewText:'',
       type:'Videogame', //prueba (que ya va bien)
       launchDate: new Date("2023-05-05"),
       reviewDate: new Date("2023-05-05"),

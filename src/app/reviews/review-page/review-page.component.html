@@ -1,12 +1,12 @@
 <nav class="navbar navbar-dark bg-dark justify-content-between mt-3 row">
   <ul class="nav nav-pills col-auto ms-3">
-    <li class="nav-item">
+    <li class="nav-item purpleNeon">
       <select class="form-control" [(ngModel)]="type" [ngModelOptions]="{standalone:true}">
         <option *ngFor="let option of types" value={{option.value}}>{{option.label}}</option>
       </select>
     </li>
   </ul>
-  <form class="container-fluid col">
+  <form class="container-fluid col purpleNeon">
     <input
       class="form-control"
       type="text"
@@ -18,14 +18,29 @@
   </form>
 </nav>
 
-<div
-  id="placesContainer"
-  class="mb-4 mt-4 row row-cols-1 row-cols-md-2 row-cols-xl-5 g-4"
->
-  <review-card
-    class="col"
-    *ngFor="let review of reviews | reviewFilter:search:type"
-    [review]="review"
-    (deleted)="deleteReview(review)"
-  ></review-card>
+<div id="placesContainer" class="mb-4 mt-4 row row-cols-1 row-cols-md-1 row-cols-xl-1 g-1">
+
+  <div class="col card-neon card h-100 shadow review-card" *ngFor="let review of reviews | reviewFilter:search:type" (deleted)="deleteReview(review)">
+
+    <div [routerLink]="['/users', review.user._id]" *ngIf="review.user" >
+      <img id="creatorImg" class="rounded-circle me-3" style="width: 40px;" src={{review.user.avatar}} alt="">
+      <strong id="nameCreator">{{review.user.name}}</strong>
+    </div>
+    <br>
+
+    <a [routerLink]="['/reviews', review._id]">
+      <img class="card-img-top" src="{{ review.image }}" />
+    </a>
+    <div class="card-body">
+      <h4 class="card-title"><a [routerLink]="['/reviews', review._id]">{{ review.title }}</a></h4>
+      <p class="card-text">{{ review.description }}</p>
+      <div class="card-text">
+        <small class="text-muted">
+          <strong>Type of media: </strong>{{ review.type }}
+        </small>
+      </div>
+      <p class="card-text">{{ review.reviewText.slice(0,30) }}</p>
+    </div>
+  </div>
+
 </div>

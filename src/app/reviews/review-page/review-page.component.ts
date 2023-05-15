@@ -6,6 +6,9 @@ import { ReviewFormComponent } from '../review-form/review-form.component';
 import { ReviewCardComponent } from '../review-card/review-card.component';
 import { ReviewFilterPipe } from '../pipes/review-filter.pipe';
 import { ReviewsService } from '../services/reviews.service';
+import { RouterLink } from '@angular/router';
+import { UserService } from 'src/app/users/services/user.service';
+import { User } from 'src/app/auth/interfaces/user';
 
 
 @Component({
@@ -15,7 +18,8 @@ import { ReviewsService } from '../services/reviews.service';
     FormsModule,
     ReviewFormComponent,
     ReviewCardComponent,
-    ReviewFilterPipe,],
+    ReviewFilterPipe,
+    RouterLink],
   templateUrl: './review-page.component.html',
   styleUrls: ['./review-page.component.css']
 })
@@ -34,11 +38,21 @@ export class ReviewPageComponent implements OnInit{
     {value: "Manga", label: "Manga"},
     {value: "Book", label: "Book"}];
 
-  constructor(private readonly reviewsService: ReviewsService) {}
+  constructor(
+    private readonly reviewsService: ReviewsService,
+    private readonly userService: UserService) {}
 
   ngOnInit(): void {
     this.reviewsService.getAll().subscribe(
-      reviews => this.reviews = reviews
+      reviews => {
+        this.reviews = reviews.filter((r) => r.public).map((review) => {
+          const creatorId = String(review.creator);
+          this.userService.getUserId(creatorId).subscribe((user) => {
+            review.user! = user;
+          });
+          return review;
+        });
+      }
     );
   }
 

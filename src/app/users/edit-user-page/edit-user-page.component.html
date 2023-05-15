@@ -1,16 +1,27 @@
-<form action="#" id="form-profile" class="mt-4" method="POST" role="form" (submit)="modifyName()" #nameModified="ngForm">
-  <legend>Edit profile</legend>
+<form action="#" id="form-name" class="mt-4" method="POST" role="form" (submit)="modifyName()" #nameModified="ngForm">
+  <legend>Edit Name</legend>
 
   <div class="form-group">
-    <label for="correo">Email:</label>
-    <input type="email" class="form-control" name="email" id="email" placeholder="Email" [(ngModel)]="this.email"/>
     <label for="name">Name:</label>
     <input type="text" class="form-control" name="nameUser" id="name" placeholder="Name" [(ngModel)]="name" />
 
   </div>
   <p class="text-danger" id="errorInfo1"></p>
   <p class="text-success" id="okInfo1"></p>
-  <button type="submit" class="btn btn-primary" >Edit profile</button>
+  <button type="submit" class="btn btn-primary" >Edit Name</button>
+</form>
+
+<form action="#" id="form-email" class="mt-4" method="POST" role="form" (submit)="modifyEmail()" #emailModified="ngForm">
+  <legend>Edit Email</legend>
+
+  <div class="form-group">
+    <label for="correo">Email:</label>
+    <input type="email" class="form-control" name="email" id="email" placeholder="Email" [(ngModel)]="this.email"/>
+
+  </div>
+  <p class="text-danger" id="errorInfo1"></p>
+  <p class="text-success" id="okInfo1"></p>
+  <button type="submit" class="btn btn-primary" >Edit Email</button>
 </form>
 
 <form action="#" id="form-photo" class="mt-4" method="POST" role="form" (submit)="modifyAvatar()">

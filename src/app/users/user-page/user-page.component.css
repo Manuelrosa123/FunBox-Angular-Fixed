@@ -7,3 +7,9 @@ arcgis-map {
 p,h4{
   color:rgb(238, 18, 238)
 }
+
+canvas {
+  display: block;
+  width: 200px;
+  height: 200px;
+}

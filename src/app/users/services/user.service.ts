@@ -17,21 +17,19 @@ export class UserService {
       .pipe(map((u) => u.user));
   }
 
-  /*getMyUser(): Observable<User> {
-    return this.http
-    .get<UserResponse>('users/me')
-    .pipe(map((r) => r.user));
-  }*/
-
-  nameEdit(name:string, email:string): Observable<User>{
-    return this.http.put<User>(`users/me`, ({name,email}));
+  nameEdit(name:string, _id:string): Observable<User>{
+    return this.http.put<User>(`http://localhost:8080/users/${_id}/name`, ({name}));
   }
 
-  passwdEdit(password:string): Observable<User>{
-    return this.http.put<User>(`users/me/password`, ({password}));
+  emailEdit(email:string, _id:string): Observable<User>{
+    return this.http.put<User>(`http://localhost:8080/users/${_id}/email`, ({email}));
   }
 
-  avatarEdit(avatar:string): Observable<User>{
-    return this.http.put<User>(`users/me/avatar`, ({avatar}));
+  passwdEdit(password:string, _id:string): Observable<User>{
+    return this.http.put<User>(`http://localhost:8080/users/${_id}/password`, ({password}));
+  }
+
+  avatarEdit(avatar:string, _id:string): Observable<User>{
+    return this.http.put<User>(`http://localhost:8080/users/${_id}/avatar`, ({avatar}));
   }
 }

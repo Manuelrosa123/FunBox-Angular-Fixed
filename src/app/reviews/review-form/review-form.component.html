@@ -41,7 +41,7 @@
       #descModel="ngModel"
       [ngClass]="validClasses(descModel, 'is-valid', 'is-invalid')"
     ></textarea>
-    <div class="invalid-feedback" *ngIf="titleModel.errors?.['required']">Description is required.</div>
+    <div class="invalid-feedback" *ngIf="descModel.errors?.['required']">Description is required.</div>
   </div>
 
   <div
@@ -108,6 +108,30 @@
     [ngClass]="{ 'd-none': !newReview.image }"
     class="img-thumbnail mb-3"
   />
+
+  <div class="mb-3">
+    <label for="public">Privacy</label>
+    <select class="form-control" id="public" name="public" required [(ngModel)]="newReview.public" [ngModelOptions]="{standalone:true}">
+      <option *ngFor="let option of booleanValues" value={{option.value}}>{{option.label}}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="reviewText">Review</label>
+    <textarea
+      class="form-control"
+      id="reviewText"
+      name="reviewText"
+      maxlength="3000"
+      rows="6"
+      [(ngModel)]="newReview.reviewText"
+      placeholder="Write your review here!"
+      required
+      #reviewTextModel="ngModel"
+      [ngClass]="validClasses(reviewTextModel, 'is-valid', 'is-invalid')"
+    ></textarea>
+    <div class="invalid-feedback" *ngIf="reviewTextModel.errors?.['required']">Review is required.</div>
+  </div>
 
   <div class="mb-3" *ngIf="newReview.type === 'Manga' || newReview.type === 'Book'">
     <label for="pages">Pages</label>

@@ -28,6 +28,12 @@ export class ReviewsService {
       .pipe(map((r) => r.review));
   }
 
+  edit(review: Review): Observable<Review> {
+    return this.http
+      .put<ReviewResponse>(`http://localhost:8080/reviews/${review._id}`, review)
+      .pipe(map((resp) => resp.review));
+  }
+
   delete(id: string): Observable<void> {
     return this.http.delete<void>(`reviews/${id}`); //esto para cuando tengamos la url de verdad
   }

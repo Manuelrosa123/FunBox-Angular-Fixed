@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Router, ActivatedRoute, Route} from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class ReviewFormComponent implements OnInit{
   newReview!: Review;
   saved = false;
+  edit = false;
   @ViewChild('reviewForm') reviewForm!: NgForm;
 
   types=[
@@ -36,29 +37,26 @@ export class ReviewFormComponent implements OnInit{
   constructor(
     private readonly route: ActivatedRoute,
     private readonly reviewsService: ReviewsService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly location: Location
   ) {/*this.newReview = this.resetReview();*/}
 
   ngOnInit(): void {
 
     this.newReview = this.resetReview();
 
-    /*this.route.data.subscribe((data) => (this.newReview = data['review'])); //if editing
-
-    this.newReview.title = this.newReview.title;
-    this.newReview.image = this.newReview.image;
-    this.newReview.description = this.newReview.description;
-    this.newReview.public=this.newReview.public;
-    this.newReview.reviewText=this.newReview.reviewText;
-    this.newReview.type=this.newReview.type;
-    this.newReview.launchDate = this.newReview.launchDate;
-    this.newReview.reviewDate = this.newReview.reviewDate;
-    this.newReview.likes = this.newReview.likes;
-    this.newReview.stars=this.newReview.stars;
-    this.newReview.creator=this.newReview.creator;
-    this.newReview.duration=this.newReview.duration;
-    this.newReview.pages=this.newReview.pages;
-    this.newReview.chapters=this.newReview.chapters;*/
+    const currentUrl = this.location.path(); // all of this means im editing
+    currentUrl.split('/');
+    const id = currentUrl.split('/')[2];
+    if (currentUrl.split('/')[3]==="edit")
+    {
+      this.edit = true;
+      console.log(id);
+      this.reviewsService.getById(String(id)).subscribe(
+        r => {
+          this.newReview = r
+        });
+    }
   }
 
   canDeactivate() {
@@ -104,13 +102,26 @@ export class ReviewFormComponent implements OnInit{
 
 
   addReview() {
-    this.reviewsService.create(this.newReview).subscribe({
-      next: () => {
-        this.saved = true;
-    },
-      error: (error) => console.error(error),
-    });
-    this.router.navigate(['/reviews']);
+
+    if (!this.edit){
+      this.reviewsService.create(this.newReview).subscribe({
+        next: () => {
+          this.saved = true;
+      },
+        error: (error) => console.error(error),
+      });
+      this.router.navigate(['/reviews']);
+    }
+    else{
+      this.reviewsService.edit(this.newReview).subscribe({
+        next: () => {
+          this.saved = true;
+      },
+        error: (error) => console.error(error),
+      });
+      this.router.navigate(['/reviews', this.newReview._id]);
+    }
+
   }
 
 

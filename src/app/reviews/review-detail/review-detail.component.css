@@ -53,6 +53,10 @@ div.blackNeon{
   margin-bottom: 5%;
 }
 
+div.big-card.card-body.col-md-6{
+  flex: 1 1 0;
+}
+
 @media (max-width:1200px)
 {
   .card-neon{

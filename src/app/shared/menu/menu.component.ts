@@ -11,12 +11,24 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class MenuComponent {
 
+  isDropDownOpen:boolean=false;
   constructor(private readonly router: Router) {}
 
   logOut(){
     this.router.navigate(['/reviews']);
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+  }
+
+  toggleDropdown() {
+    this.isDropDownOpen = !this.isDropDownOpen;
+
+    if(this.isDropDownOpen)
+    {
+      setTimeout(() => {
+        this.isDropDownOpen=false;
+      },850);
+    }
   }
 
 }

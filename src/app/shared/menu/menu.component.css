@@ -10,3 +10,23 @@ nav a:hover{
 nav a.nav-link.active{
   color:rgb(238, 18, 238);
 }
+
+.small-nav{
+  display: none;
+}
+
+@media (max-width: 910px)
+{
+  .big-nav{
+    display: none;
+  }
+
+  .small-nav{
+    display: block;
+  }
+}
+
+a.dropdown-item.active{
+  background-color:rgb(238, 18, 238);
+  color:white;
+}

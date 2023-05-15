@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-  <div class="container-fluid">
+  <div class="container-fluid big-nav">
     <a class="navbar-brand" [routerLink]="['/reviews']">FunBox <img src="../../../favicon.ico" style="width: 10%;"></a>
 
     <ul class="navbar-nav ml-auto mb-lg-0">
@@ -25,5 +25,29 @@
         <a class="nav-link" (click)="logOut()">Log-out</a>
       </li>
     </ul>
+  </div>
+
+  <div class="small-nav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" (click)="toggleDropdown()" aria-expanded="false">
+            <img src="../../../favicon.ico" style="width: 10%;"> FunBox
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" [ngClass]="{'show': isDropDownOpen}" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" [routerLink]="['/reviews']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/auth', 'login']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sign In</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/auth', 'register']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Create Account</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/reviews', 'multibrary']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Multibrary</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/reviews', 'add']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">New Review</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/users', 'me']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Profile</a></li>
+            <li><a class="dropdown-item" (click)="logOut()">Log-Out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

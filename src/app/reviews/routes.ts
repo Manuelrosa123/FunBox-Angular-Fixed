@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { leavePageGuard } from '../guards/leave-page.guard';
 import { AuthGuard } from '../auth/guards/auth.guard';
-//import { reviewIdGuard } from './guards/review-id.guard';
-//import { reviewResolver } from './resolvers/review.resolver';
+import { reviewIdGuard } from './guards/review-id.guard';
+import { reviewResolver } from './resolvers/review.resolver';
 
 export const REVIEW_ROUTES: Routes = [
   {
@@ -50,9 +50,8 @@ export const REVIEW_ROUTES: Routes = [
       import('./review-form/review-form.component').then(
         (m) => m.ReviewFormComponent
       ),
-      canActivate: [AuthGuard]
-    /*canActivate: [reviewIdGuard],
-    resolve: {
+      canActivate: [AuthGuard]/*,,reviewIdGuard
+      resolve: {
       review: reviewResolver
     }*/
   },

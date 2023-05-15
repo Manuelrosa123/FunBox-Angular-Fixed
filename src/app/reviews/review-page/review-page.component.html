@@ -18,7 +18,7 @@
   </form>
 </nav>
 
-<div id="placesContainer" class="mb-4 mt-4 row row-cols-1 row-cols-md-1 row-cols-xl-1 g-1">
+<div id="placesContainer" class="mb-4 mt-4 row row-cols-1 row-cols-md-1 row-cols-xl-1 g-1">  <!--Here im not using the card component, because its different from what we need in this page.-->
 
   <div class="col card-neon card h-100 shadow review-card" *ngFor="let review of reviews | reviewFilter:search:type" (deleted)="deleteReview(review)">
 

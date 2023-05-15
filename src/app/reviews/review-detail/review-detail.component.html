@@ -1,14 +1,84 @@
-<div class="mt-4">
-  <review-card
-    [review]="review"
-    *ngIf="review"
-    (deleted)="goBack()"
-  ></review-card>
+<div class="row">
+  <div class="card-neon card h-100 shadow col-md-6">
+
+    <a [routerLink]="['/reviews', review._id]">
+      <img class="card-img-top" src="{{ review.image }}" />
+    </a>
+
+    <div class="small-card card-body">
+      <h4 class="card-title"><a [routerLink]="['/reviews', review._id]">{{ review.title }}</a></h4>
+      <p class="card-text">{{ review.description }}</p>
+      <div class="card-text">
+        <small class="text-muted">
+          <strong>Released: </strong>{{ dateLaunchment }}
+        </small>
+        <br>
+        <small class="text-muted">
+          <strong>Type of media: </strong>{{ review.type }}
+          <br>
+        </small>
+        <small class="text-muted" *ngIf="review.type === 'Videogame'">
+          <strong>Duration (in hours): </strong>{{ review.duration }}
+          <br>
+        </small>
+        <small class="text-muted" *ngIf="review.type === 'Film'">
+          <strong>Duration (in minutes): </strong>{{ review.duration }}
+          <br>
+        </small>
+        <small class="text-muted" *ngIf="review.type === 'Series' || review.type === 'Manga' || review.type==='Anime'">
+          <strong>Chapters: </strong>{{ review.chapters }}
+          <br>
+        </small>
+        <small class="text-muted" *ngIf="review.type === 'Manga' || review.type === 'Book'">
+          <strong>Pages: </strong>{{ review.pages }}
+        </small>
+      </div>
+      <br>
+      <p class="card-text">{{ review.reviewText }}</p>
+    </div>
+
+    <div class="card-footer">
+      <small class="text-muted">Published: {{ dateReview }}</small>
+    </div>
+  </div>
+
+  <div class="big-card card-body col-md-6">
+    <h4 class="card-title"><a [routerLink]="['/reviews', review._id]">{{ review.title }}</a></h4>
+    <p class="card-text">{{ review.description }}</p>
+    <div class="card-text">
+      <small class="text-muted">
+        <strong>Released: </strong>{{ dateLaunchment }}
+      </small>
+      <br>
+      <small class="text-muted">
+        <strong>Type of media: </strong>{{ review.type }}
+        <br>
+      </small>
+      <small class="text-muted" *ngIf="review.type === 'Videogame'">
+        <strong>Duration (in hours): </strong>{{ review.duration }}
+        <br>
+      </small>
+      <small class="text-muted" *ngIf="review.type === 'Film'">
+        <strong>Duration (in minutes): </strong>{{ review.duration }}
+        <br>
+      </small>
+      <small class="text-muted" *ngIf="review.type === 'Series' || review.type === 'Manga' || review.type==='Anime'">
+        <strong>Chapters: </strong>{{ review.chapters }}
+        <br>
+      </small>
+      <small class="text-muted" *ngIf="review.type === 'Manga' || review.type === 'Book'">
+        <strong>Pages: </strong>{{ review.pages }}
+      </small>
+    </div>
+    <br>
+    <p class="card-text">{{ review.reviewText }}</p>
+  </div>
+
 </div>
 
 <div class="card mt-4" id="cardCreator" (click)="navigateUserProfile()">
-  <div class="card-header bg-danger text-white">Review's owner</div>
-  <div class="card-body d-flex flex-row">
+  <div class="card-header purpleNeon text-white">Review's owner</div>
+  <div class="card-body blackNeon d-flex flex-row">
     <div>
       <img id="creatorImg" class="rounded-circle me-3" style="width: 40px;" src={{reviewCreator.avatar}} alt="">
     </div>
@@ -19,9 +89,7 @@
   </div>
 </div>
 <div class="mt-4 mb-4">
-  <!--<button class="btn btn-primary" *ngIf="!review.mine">
-    Add to wish list
-  </button>-->
-  <button type="button" class="btn btn-primary" *ngIf="me" [routerLink]="['/reviews', review._id, 'edit']">Edit</button>&nbsp;
-  <button class="btn btn-success" (click)="goBack()">Go back</button>
+  <!--<button class="btn btn-primary" *ngIf="!review.mine">Add to wish list</button>-->
+  <button type="button" class="btn purpleButton" *ngIf="me" [routerLink]="['/reviews', review._id, 'edit']">Edit</button>&nbsp;
+  <button class="btn btn-primary" (click)="goBack()">Go back</button>
 </div>

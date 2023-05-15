@@ -20,10 +20,10 @@ export class ReviewCardComponent {
   //longitude= -0.5;
 
   dateReview!:string;
-  dateLauchment!:string;
+  dateLaunchment!:string;
 
   ngOnInit() {
-    this.dateLauchment= this.transformDate(this.review.launchDate);
+    this.dateLaunchment= this.transformDate(this.review.launchDate);
     this.dateReview = this.transformDate(this.review.reviewDate);
     /*navigator.geolocation.getCurrentPosition(pos => {
       this.latitude = pos.coords.latitude;

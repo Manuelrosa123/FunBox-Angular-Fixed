@@ -20,6 +20,9 @@ export class ReviewDetailComponent {
   reviewCreator!:User
   me:boolean=false;
 
+  dateLaunchment!:string;
+  dateReview!:string;
+
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
@@ -38,8 +41,15 @@ export class ReviewDetailComponent {
         );
         if (this.review.creator===JSON.parse(localStorage.getItem("user")!)._id) //to see if the user is yourself, so you can edit.
           this.me=true;
+        this.dateLaunchment = this.transformDate(this.review.launchDate);
+        this.dateReview = this.transformDate(this.review.reviewDate);
       }
     );
+  }
+
+  transformDate(date:Date):string{
+    const myDate=String(date);
+    return myDate.substring(0,10);
   }
 
   navigateUserProfile()

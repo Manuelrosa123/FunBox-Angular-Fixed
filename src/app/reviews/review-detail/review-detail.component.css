@@ -1,3 +1,74 @@
 #cardCreator{
   cursor: cell
 }
+
+div.purpleNeon{
+  background-color:rgb(238, 18, 238)
+}
+
+div.blackNeon{
+  color:rgb(238, 18, 238);
+  background-color: #000;
+}
+
+#cardCreator{
+  border: #000;
+}
+
+#cardCreator:hover{
+  border-color: rgb(238, 18, 238);;
+}
+
+.purpleButton{
+  color: white;
+  background-color:rgb(238, 18, 238);
+}
+
+.card-neon {
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}
+
+.small-card{
+  display: none;
+}
+
+.big-card{
+  display: block;
+  background-color: #000;
+  color: #fff;
+  position: relative;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}
+
+@media (max-width:1200px)
+{
+  .card-neon{
+    width: 100%;
+  }
+
+  .small-card{
+    display: block;
+  }
+
+  .big-card{
+    display: none;
+  }
+}
+
+.card-neon h4 a, .big-card h4 a{
+  color:rgb(238, 18, 238);
+  text-decoration: none;
+}

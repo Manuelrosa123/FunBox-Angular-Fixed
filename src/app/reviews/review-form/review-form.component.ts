@@ -42,20 +42,23 @@ export class ReviewFormComponent implements OnInit{
   ngOnInit(): void {
 
     this.newReview = this.resetReview();
-    /*this.route.data.subscribe((data) => (this.newReview = data['review']));
+
+    /*this.route.data.subscribe((data) => (this.newReview = data['review'])); //if editing
 
     this.newReview.title = this.newReview.title;
-    this.newReview.image = this.newReview.image;// The image is info that could come from external API
-    this.newReview.likes = this.newReview.likes;
-    this.newReview.launchDate = this.newReview.launchDate;//launchDate is info that could come from external API
-    this.newReview.reviewDate = this.newReview.reviewDate;
+    this.newReview.image = this.newReview.image;
     this.newReview.description = this.newReview.description;
-    if(this.newReview.duration != ''){//Duration is/can be info that could come from external API
-      this.newReview.duration = this.newReview.duration;
-    }
-    if(this.newReview.pages != 0){ //Duration is/can info that could come from external API
-      this.newReview.pages = this.newReview.pages;
-    }*/
+    this.newReview.public=this.newReview.public;
+    this.newReview.reviewText=this.newReview.reviewText;
+    this.newReview.type=this.newReview.type;
+    this.newReview.launchDate = this.newReview.launchDate;
+    this.newReview.reviewDate = this.newReview.reviewDate;
+    this.newReview.likes = this.newReview.likes;
+    this.newReview.stars=this.newReview.stars;
+    this.newReview.creator=this.newReview.creator;
+    this.newReview.duration=this.newReview.duration;
+    this.newReview.pages=this.newReview.pages;
+    this.newReview.chapters=this.newReview.chapters;*/
   }
 
   canDeactivate() {

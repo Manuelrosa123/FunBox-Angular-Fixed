@@ -35,7 +35,7 @@ export class ReviewsService {
   }
 
   delete(id: string): Observable<void> {
-    return this.http.delete<void>(`reviews/${id}`); //esto para cuando tengamos la url de verdad
+    return this.http.delete<void>(`http://localhost:8080/reviews/${id}`); //esto para cuando tengamos la url de verdad
   }
 
   //Creacion de servicio de editar

@@ -10,6 +10,7 @@
       <p *ngIf="me">
         <a class="btn btn-primary" [routerLink]="['/users', 'edit']" >Edit profile</a>
       </p>
+      <canvas #myChartCanvas></canvas>
   </div><br><br>
 
   <!--<div class="mt-4">
@@ -17,7 +18,7 @@
       <arcgis-marker [coords]="[this.user.lng, this.user.lat]" color="red"></arcgis-marker>
     </arcgis-map>
   </div>-->
-  <canvas #myChartCanvas></canvas>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </div>

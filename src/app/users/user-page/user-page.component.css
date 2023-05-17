@@ -10,6 +10,38 @@ p,h4{
 
 canvas {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 700px !important;
+  height: 700px !important;
+}
+
+@media (max-width:1400px)
+{
+  canvas{
+    width: 600px !important;
+    height: 600px !important;
+  }
+}
+
+@media (max-width:1200px)
+{
+  canvas{
+    width: 400px !important;
+    height: 400px !important;
+  }
+}
+
+@media (max-width:1000px)
+{
+  canvas{
+    width: 350px !important;
+    height: 350px !important;
+  }
+}
+
+@media (max-width:600px)
+{
+  canvas{
+    width: 250px !important;
+    height: 250px !important;
+  }
 }

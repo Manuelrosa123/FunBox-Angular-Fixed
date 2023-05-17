@@ -52,6 +52,11 @@ export class ReviewDetailComponent {
     return myDate.substring(0,10);
   }
 
+  deleteReview(){
+    this.reviewsService.delete(String(this.review._id)).subscribe(r=>{console.log("Removed: "+r)});
+    this.router.navigate(['/reviews']);
+  }
+
   navigateUserProfile()
   {
     this.router.navigate(['/users/'+this.reviewCreator._id]);

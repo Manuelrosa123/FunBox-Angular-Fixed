@@ -91,5 +91,6 @@
 <div class="mt-4 mb-4">
   <!--<button class="btn btn-primary" *ngIf="!review.mine">Add to wish list</button>-->
   <button type="button" class="btn purpleButton" *ngIf="me" [routerLink]="['/reviews', review._id, 'edit']">Edit</button>&nbsp;
+  <button class="btn btn-danger" (click)="deleteReview()">Delete</button>&nbsp;
   <button class="btn btn-primary" (click)="goBack()">Go back</button>
 </div>

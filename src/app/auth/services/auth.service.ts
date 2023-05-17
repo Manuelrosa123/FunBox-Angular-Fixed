@@ -11,23 +11,13 @@ import { Observable } from 'rxjs';
 
 export class AuthService {
 
-    /*isLogged() {
-      throw new Error('Method not implemented.');
-    }*/
-
     constructor(private readonly http: HttpClient) { }
 
-    // getReviews() {                                                     no se qué es esto
-    //     const resp = this.http.get<UsersResponse>(`${SERVER}/users`);
-    //     return resp.users;
-    // }
-
     register(user: User): Observable<UserResponse> {
-        //return this.http.post<UserResponse>(`auth/register`, user); esto funcionaría si tuvieramos
-        return this.http.post<UserResponse>('http://localhost:8080/users', user);
+        return this.http.post<UserResponse>('users', user);
     }
 
     login(user: UserLogin): Observable<TokenResponse> {
-        return this.http.post<TokenResponse>('http://localhost:8080/users/login', user);
+        return this.http.post<TokenResponse>('users/login', user);
     }
 }

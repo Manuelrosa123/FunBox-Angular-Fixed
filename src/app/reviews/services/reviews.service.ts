@@ -12,31 +12,29 @@ export class ReviewsService {
 
   getAll(): Observable<Review[]> {
     return this.http
-      .get<ReviewsResponse>('http://localhost:8080/reviews')
+      .get<ReviewsResponse>('reviews')
       .pipe(map((r) => r.reviews));
   }
 
   getById(id: string): Observable<Review> {
     return this.http
-      .get<ReviewResponse>(`http://localhost:8080/reviews/${id}`)
+      .get<ReviewResponse>(`reviews/${id}`)
       .pipe(map((r) => r.review));
   }
 
   create(review: Review): Observable<Review> {
     return this.http
-      .post<ReviewResponse>('http://localhost:8080/reviews', review)
+      .post<ReviewResponse>('reviews', review)
       .pipe(map((r) => r.review));
   }
 
   edit(review: Review): Observable<Review> {
     return this.http
-      .put<ReviewResponse>(`http://localhost:8080/reviews/${review._id}`, review)
+      .put<ReviewResponse>(`reviews/${review._id}`, review)
       .pipe(map((resp) => resp.review));
   }
 
   delete(id: string): Observable<void> {
-    return this.http.delete<void>(`http://localhost:8080/reviews/${id}`); //esto para cuando tengamos la url de verdad
+    return this.http.delete<void>(`reviews/${id}`);
   }
-
-  //Creacion de servicio de editar
 }

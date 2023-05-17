@@ -13,23 +13,23 @@ export class UserService {
 
   getUserId(_id:string):Observable<User>{
     return this.http
-      .get<UserResponse>(`http://localhost:8080/users/${_id}`)
+      .get<UserResponse>(`users/${_id}`)
       .pipe(map((u) => u.user));
   }
 
   nameEdit(name:string, _id:string): Observable<User>{
-    return this.http.put<User>(`http://localhost:8080/users/${_id}/name`, ({name}));
+    return this.http.put<User>(`users/${_id}/name`, ({name}));
   }
 
   emailEdit(email:string, _id:string): Observable<User>{
-    return this.http.put<User>(`http://localhost:8080/users/${_id}/email`, ({email}));
+    return this.http.put<User>(`users/${_id}/email`, ({email}));
   }
 
   passwdEdit(password:string, _id:string): Observable<User>{
-    return this.http.put<User>(`http://localhost:8080/users/${_id}/password`, ({password}));
+    return this.http.put<User>(`users/${_id}/password`, ({password}));
   }
 
   avatarEdit(avatar:string, _id:string): Observable<User>{
-    return this.http.put<User>(`http://localhost:8080/users/${_id}/avatar`, ({avatar}));
+    return this.http.put<User>(`users/${_id}/avatar`, ({avatar}));
   }
 }

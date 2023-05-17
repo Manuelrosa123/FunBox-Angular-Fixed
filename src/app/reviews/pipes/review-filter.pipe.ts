@@ -9,11 +9,36 @@ export class ReviewFilterPipe implements PipeTransform {
   transform(
     reviews: Review[],
     search: string,
-    type: string
+    type: string,
+    order : string,
   ): Review[] {
     return search
       ? reviews.filter((r) =>
           r.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) && r.type.toLocaleLowerCase().includes(type.toLocaleLowerCase()))
-      : reviews;
+      : this.OrderBy(order,reviews);
+  }
+
+  OrderBy(order:string, reviews:Review[]){
+    let myReviews=[...reviews];
+    if (order==="title")
+    {
+      myReviews.sort((a,b)=>{
+        if (a.title===b.title) return 0;
+        return a.title > b.title ? 1 : -1
+      });
+    }
+    else if (order==="launchDate"){
+      myReviews.sort((a,b)=>{
+        if (a.launchDate===b.launchDate) return 0;
+        return a.launchDate < b.launchDate ? 1 : -1
+      });
+    }
+    else if (order==="reviewDate"){
+      myReviews.sort((a,b)=>{
+        if (a.reviewDate===b.reviewDate) return 0;
+        return a.reviewDate < b.reviewDate ? 1 : -1
+      });
+    }
+    return myReviews;
   }
 }

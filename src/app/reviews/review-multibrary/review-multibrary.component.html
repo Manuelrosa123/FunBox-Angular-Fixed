@@ -16,6 +16,13 @@
       [(ngModel)]="search"
     />
   </form>
+  <ul class="nav nav-pills col-auto ms-3">
+    <li class="nav-item purpleNeon">
+      <select class="form-control" [(ngModel)]="order" [ngModelOptions]="{standalone:true}">
+        <option *ngFor="let option of typeOfOrders" value={{option.value}}>Order By: {{option.label}}</option>
+      </select>
+    </li>
+  </ul>
 </nav>
 
 <div
@@ -24,7 +31,7 @@
 >
   <review-card
     class="col"
-    *ngFor="let review of reviews | reviewFilter:search:type"
+    *ngFor="let review of reviews | reviewFilter:search:type:order"
     [review]="review"
     (deleted)="deleteReview(review)"
   ></review-card>

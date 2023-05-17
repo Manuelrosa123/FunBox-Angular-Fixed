@@ -27,7 +27,7 @@
 
 <div id="placesContainer" class="mb-4 mt-4 row row-cols-2 row-cols-md-2 row-cols-xl-1 g-1">  <!--Here im not using the card component, because its different from what we need in this page.-->
 
-  <div class="col card-neon card h-100 shadow review-card" *ngFor="let review of reviews | reviewFilter:search:type" (deleted)="deleteReview(review)">
+  <div class="col card-neon card h-100 shadow review-card" *ngFor="let review of reviews | reviewFilter:search:type:order" (deleted)="deleteReview(review)">
 
     <div [routerLink]="['/users', review.user._id]" *ngIf="review.user" >
       <img id="creatorImg" class="rounded-circle me-3" style="width: 40px;" src={{review.user.avatar}} alt="">

@@ -23,6 +23,7 @@ export class ReviewMultibraryComponent {
   reviews: Review[] = [];
   search = '';
   type="Videogame"
+  order="title"
 
   types=[
     {value:"", label:"All"},
@@ -32,6 +33,12 @@ export class ReviewMultibraryComponent {
     {value:'Anime',label:"Anime"},
     {value: "Manga", label: "Manga"},
     {value: "Book", label: "Book"}];
+
+  typeOfOrders=[
+    {value:"title", label:"Title"},
+    {value:"launchDate", label:"Launch"},
+    {value:"reviewDate", label:"Newest"}
+  ];
 
   constructor(private readonly reviewsService: ReviewsService) {}
 

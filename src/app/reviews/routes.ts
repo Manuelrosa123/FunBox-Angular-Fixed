@@ -18,8 +18,8 @@ export const REVIEW_ROUTES: Routes = [
       import('./review-form/review-form.component').then(
         (m) => m.ReviewFormComponent
       ),
-      canActivate: [AuthGuard]
-    //canDeactivate: [leavePageGuard]
+    canActivate: [AuthGuard],
+    canDeactivate: [leavePageGuard]
   },
   {
     path: 'multibrary',

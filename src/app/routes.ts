@@ -29,11 +29,4 @@ export const APP_ROUTES: Routes = [
     path: '**',
     redirectTo: '/auth/login',
   },
-  /*{
-    path: ':id/edit', component: ReviewFormComponent,
-    canActivate: [reviewIdGuard], canDeactivate: [leavePageGuard],
-    resolve: {
-      review: reviewResolver
-    }
-  }*/
 ];

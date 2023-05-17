@@ -34,7 +34,7 @@
         </small>
       </div>
       <br>
-      <p class="card-text">{{ review.reviewText }}</p>
+      <p class="card-text reviewTextstring" >{{ review.reviewText }}</p>
     </div>
 
     <div class="card-footer">
@@ -71,7 +71,7 @@
       </small>
     </div>
     <br>
-    <p class="card-text">{{ review.reviewText }}</p>
+    <p class="card-text reviewTextstring">{{ review.reviewText }}</p>
   </div>
 
 </div>
@@ -91,6 +91,6 @@
 <div class="mt-4 mb-4">
   <!--<button class="btn btn-primary" *ngIf="!review.mine">Add to wish list</button>-->
   <button type="button" class="btn purpleButton" *ngIf="me" [routerLink]="['/reviews', review._id, 'edit']">Edit</button>&nbsp;
-  <button class="btn btn-danger" (click)="deleteReview()">Delete</button>&nbsp;
+  <button class="btn btn-danger" *ngIf="me" (click)="deleteReview()">Delete</button>&nbsp;
   <button class="btn btn-primary" (click)="goBack()">Go back</button>
 </div>

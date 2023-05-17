@@ -182,11 +182,18 @@
   </div>
 
   <div>
-    <button
+    <button *ngIf="!edit"
       type="submit"
       class="btn btn-primary"
       [disabled]="reviewForm.invalid">
       Create
+    </button>
+
+    <button *ngIf="edit"
+      type="submit"
+      class="btn btn-primary"
+      >
+      Edit Review
     </button>
 
   </div>

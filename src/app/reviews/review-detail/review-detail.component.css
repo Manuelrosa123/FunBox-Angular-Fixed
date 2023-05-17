@@ -76,3 +76,7 @@ div.big-card.card-body.col-md-6{
   color:rgb(238, 18, 238);
   text-decoration: none;
 }
+
+.reviewTextstring{
+  font-size: 18px;
+}

@@ -28,6 +28,7 @@ export class ReviewPageComponent implements OnInit{
   //onlyFriends = false;
   search = '';
   type="Videogame"
+  order="title"
 
   types=[
     {value:"", label:"All"},
@@ -37,6 +38,12 @@ export class ReviewPageComponent implements OnInit{
     {value:'Anime',label:"Anime"},
     {value: "Manga", label: "Manga"},
     {value: "Book", label: "Book"}];
+
+    typeOfOrders=[
+      {value:"title", label:"Title"},
+      {value:"launchDate", label:"Launch"},
+      {value:"reviewDate", label:"Newest"}
+      ];
 
   constructor(
     private readonly reviewsService: ReviewsService,

@@ -2,7 +2,6 @@ import { CommonModule, Location } from '@angular/common';
 import { Router, ActivatedRoute, Route} from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
-import { CanDeactivateComponent } from 'src/app/guards/leave-page.guard';
 import { Review } from '../interfaces/review';
 import { ReviewsService } from '../services/reviews.service';
 //import { StarRatingComponent } from 'src/app/reviews/star-rating/star-rating.component';

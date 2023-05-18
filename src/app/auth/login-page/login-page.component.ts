@@ -30,17 +30,10 @@ export class LoginPageComponent {
   resetUserLogin() {
     return {
       email: '',
-      password: '',
-      //lat: 0,
-      //lng: 0,
+      password: ''
     };
   }
-  ngOnInit(): void {/*
-    console.log(this.newUserLogin);
-    navigator.geolocation.getCurrentPosition(pos => {
-      this.newUserLogin.lat = pos.coords.latitude;
-      this.newUserLogin.lng = pos.coords.longitude;
-    });*/
+  ngOnInit(): void {
   }
 
   validClasses(ngModel: NgModel, validClass: string, errorClass: string) {

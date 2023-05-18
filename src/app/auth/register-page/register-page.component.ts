@@ -43,10 +43,7 @@ export class RegisterPageComponent implements OnInit{
 
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngOnInit():void{
-    /*GeolocationService.getLocation().then(resp=>{
-      this.newRegister.lat=resp.latitude;
-      this.newRegister.lng=resp.longitude;
-  })*/
+
   }
 
   registerUser(){

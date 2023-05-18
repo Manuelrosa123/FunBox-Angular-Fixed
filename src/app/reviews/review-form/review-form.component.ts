@@ -39,7 +39,7 @@ export class ReviewFormComponent implements OnInit{
     private readonly reviewsService: ReviewsService,
     private readonly router: Router,
     private readonly location: Location
-  ) {/*this.newReview = this.resetReview();*/}
+  ) {}
 
   ngOnInit(): void {
 
@@ -74,16 +74,14 @@ export class ReviewFormComponent implements OnInit{
       description: '',
       public:true,
       reviewText:'',
-      type:'Videogame', //prueba (que ya va bien)
+      type:'Videogame',
       launchDate: new Date("2023-05-05"),
       reviewDate: new Date("2023-05-05"),
       likes: 0,
       stars: 0,
       duration:0,
       creator: JSON.parse(localStorage.getItem("user")!)._id,
-      //address: ''  //???
       pages:0,
-      mine:true,
       chapters:0
     };
   }

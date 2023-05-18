@@ -7,7 +7,7 @@ export interface Review {
   description: string;
   public:boolean;
   reviewText:string;
-  type: string; //esto era el format antes
+  type: string;
   launchDate: Date;
   reviewDate: Date;
   chapters?:number;
@@ -16,6 +16,5 @@ export interface Review {
   likes: number;
   duration?: number;
   pages?: number;
-  mine?: boolean;  //esto puede ser un poco mareo (un poco obsoleto)
   user?:User; //this one is only used in the Index, due certain dificulties
 }

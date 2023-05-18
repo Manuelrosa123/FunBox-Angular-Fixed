@@ -25,7 +25,6 @@ import { User } from 'src/app/auth/interfaces/user';
 })
 export class ReviewPageComponent implements OnInit{
   reviews: Review[] = [];
-  //onlyFriends = false;
   search = '';
   type="Videogame"
   order="title"

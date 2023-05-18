@@ -4,11 +4,10 @@ import { provideRouter } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/routes';
 import { baseUrlInterceptor } from './app/interceptors/base-url.interceptor';
-//import { authInterceptor } from './app/interceptors/auth.interceptor';
+
 
 bootstrapApplication(AppComponent, {
   providers: [
-    /*provideHttpClient(withInterceptors([baseUrlInterceptor, authInterceptor])),*/
     provideHttpClient(withInterceptors([baseUrlInterceptor])),
     provideRouter(APP_ROUTES),
   ],

@@ -1,8 +1,4 @@
 import { Routes } from '@angular/router';
-import { leavePageGuard } from './guards/leave-page.guard';
-import { reviewIdGuard } from './reviews/guards/review-id.guard';
-import { reviewResolver } from './reviews/resolvers/review.resolver';
-import { ReviewFormComponent } from './reviews/review-form/review-form.component';
 
 export const APP_ROUTES: Routes = [
   {

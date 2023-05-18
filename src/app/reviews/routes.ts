@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 import { leavePageGuard } from '../guards/leave-page.guard';
 import { AuthGuard } from '../auth/guards/auth.guard';
-import { reviewIdGuard } from './guards/review-id.guard';
-import { reviewResolver } from './resolvers/review.resolver';
 
 export const REVIEW_ROUTES: Routes = [
   {
@@ -28,10 +26,6 @@ export const REVIEW_ROUTES: Routes = [
         (m) => m.ReviewMultibraryComponent
       ),
       canActivate: [AuthGuard]
-    /*canActivate: [reviewIdGuard],
-    resolve: {
-      review: reviewResolver
-    }*/
   },
   {
     path: ':id',
@@ -39,10 +33,6 @@ export const REVIEW_ROUTES: Routes = [
       import('./review-detail/review-detail.component').then(
         (m) => m.ReviewDetailComponent
       ),
-    /*canActivate: [reviewIdGuard],
-    resolve: {
-      review: reviewResolver
-    }*/
   },
   {
     path: ':id/edit',
@@ -50,9 +40,6 @@ export const REVIEW_ROUTES: Routes = [
       import('./review-form/review-form.component').then(
         (m) => m.ReviewFormComponent
       ),
-      canActivate: [AuthGuard]/*,,reviewIdGuard
-      resolve: {
-      review: reviewResolver
-    }*/
+      canActivate: [AuthGuard]
   },
 ];

@@ -47,9 +47,9 @@ export class RegisterPageComponent implements OnInit{
   }
 
   registerUser(){
+    this.saved = true;
     this.authService.register(this.newRegister).subscribe({
       next: () => {
-        this.saved = true;
       },
       error: (error) => console.error("error:" + error),
     })

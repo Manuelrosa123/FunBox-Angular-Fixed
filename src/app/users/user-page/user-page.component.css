@@ -45,3 +45,8 @@ canvas {
     height: 250px !important;
   }
 }
+
+.btnPurple{
+  background-color:rgb(238, 18, 238);
+  color:white;
+}

@@ -99,11 +99,10 @@ export class ReviewFormComponent implements OnInit{
 
 
   addReview() {
-
+    this.saved = true;
     if (!this.edit){
       this.reviewsService.create(this.newReview).subscribe({
         next: () => {
-          this.saved = true;
       },
         error: (error) => console.error(error),
       });
@@ -112,7 +111,6 @@ export class ReviewFormComponent implements OnInit{
     else{
       this.reviewsService.edit(this.newReview).subscribe({
         next: () => {
-          this.saved = true;
       },
         error: (error) => console.error(error),
       });
